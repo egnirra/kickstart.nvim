@@ -253,7 +253,9 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-
+  'windwp/nvim-autopairs',
+  event = "InsertEnter",
+  opts = {},
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -289,6 +291,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 require('lspconfig').tflint.setup({
   flags = { debounce_text_changes = 150 },
 })
+
+require('nvim-autopairs').setup()
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -598,7 +602,7 @@ setupPowerShellLSP(powershellPath)
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
