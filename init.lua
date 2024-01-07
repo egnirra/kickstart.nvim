@@ -579,20 +579,13 @@ require('mason').setup()
 require('mason-lspconfig').setup()
 
 
-local function setupPowerShellLSP(powershellPath)
-  require("lspconfig").powershell_es.setup({
-    bundle_path = powershellPath,
-    shell = 'pwsh',
-    init_options = {
-      enableProfileLoading = false,
-    },
-  })
-end
+require("lspconfig").powershell_es.setup({
+  shell = 'pwsh',
+  init_options = {
+    enableProfileLoading = false,
+  },
+})
 
-local homePath = os.getenv("HOME") or os.getenv("USERPROFILE")
-local powershellPath = homePath
--- Call the function and pass the desired powershellPath
-setupPowerShellLSP(powershellPath)
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -606,6 +599,9 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   pyright = {},
+  terraformls = {},
+  powershell_es = {},
+  tflint = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
