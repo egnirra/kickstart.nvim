@@ -68,7 +68,7 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
-
+  'mechatroner/rainbow_csv',
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -291,6 +291,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 require('lspconfig').tflint.setup({
   flags = { debounce_text_changes = 150 },
 })
+
+
+
 
 require('nvim-autopairs').setup()
 
