@@ -52,6 +52,13 @@ return {
 
         -- Create an autocmd that will run *before* we save the buffer.
         --  Run the formatting command for the LSP that has just attached.
+        local format_opts = {
+          tabSize = 2,
+          insertSpaces = true,
+          trimTrailingWhitespace = true,
+          insertFinalNewline = true,
+          trimFinalNewlines = true,
+        }
         vim.api.nvim_create_autocmd('BufWritePre', {
           group = get_augroup(client),
           buffer = bufnr,
@@ -62,6 +69,7 @@ return {
 
             vim.lsp.buf.format {
               async = false,
+              formatting_options = format_opts,
               filter = function(c)
                 return c.id == client.id
               end,
