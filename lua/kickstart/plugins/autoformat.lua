@@ -53,7 +53,7 @@ return {
         -- Create an autocmd that will run *before* we save the buffer.
         --  Run the formatting command for the LSP that has just attached.
         local format_opts = {
-          tabSize = 2,
+          tabSize = 4,
           insertSpaces = true,
           trimTrailingWhitespace = true,
           insertFinalNewline = true,
