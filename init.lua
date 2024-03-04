@@ -262,17 +262,29 @@ require('lazy').setup({
     require 'kickstart.plugins.autoformat',
     -- require 'kickstart.plugins.debug',
     {
-        "jackMort/ChatGPT.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("chatgpt").setup()
-        end,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "folke/trouble.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
+        'huggingface/llm.nvim',
+        opts = {
+            backend = "ollama",
+            tokens_to_clear = { "<EOT>" },
+            fim = {
+                enabled = true,
+                prefix = "<PRE> ",
+                middle = " <MID>",
+                suffix = " <SUF>",
+            },
+            context_window = 4096,
+            tokenizer = {
+                repository = "codellama/CodeLlama-13b-hf",
+            },
+            -- cf Setup
+            model = "codellama:13b-code-q4_K_M",
+            url = "http://localhost:11434/api/generate",
+            -- cf https://github.com/ollama/ollama/blob/main/docs/api.md#parameters
+            request_body = {
+                system =
+                "You are a code autocompletion engine. Respond with a continuation of the code provided and nothing else. Code should not be in a code block. Anything that is not code should be written as a code comment."
+            },
+        },
     },
     -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
     --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
