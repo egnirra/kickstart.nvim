@@ -265,19 +265,19 @@ require('lazy').setup({
         'huggingface/llm.nvim',
         opts = {
             backend = "ollama",
-            tokens_to_clear = { "<EOT>" },
+            tokens_to_clear = { "<|endoftext|>" },
             fim = {
                 enabled = true,
-                prefix = "<PRE> ",
-                middle = " <MID>",
-                suffix = " <SUF>",
+                prefix = "<fim_prefix>",
+                middle = "<fim_middle>",
+                suffix = "<fim_suffix>",
             },
-            context_window = 4096,
+            context_window = 8192,
             tokenizer = {
-                repository = "codellama/CodeLlama-13b-hf",
+                repository = "bigcode/starcoder",
             },
             -- cf Setup
-            model = "codellama:13b-code-q4_K_M",
+            model = "starcoder:15b-q3_K_M",
             url = "http://localhost:11434/api/generate",
             -- cf https://github.com/ollama/ollama/blob/main/docs/api.md#parameters
             request_body = {
