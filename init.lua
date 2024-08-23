@@ -701,6 +701,12 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      {
+        'tris203/precognition.nvim',
+        opts = {
+          startVisable = true,
+        },
+      },
     },
     config = function()
       -- See `:help cmp`
@@ -844,7 +850,27 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      -- ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'markdown_inline',
+        'markdown',
+        'c_sharp',
+        'bicep',
+        'terraform',
+        'hcl',
+        'c',
+        'cpp',
+        'go',
+        'lua',
+        'python',
+        'rust',
+        'tsx',
+        'javascript',
+        'typescript',
+        'vimdoc',
+        'vim',
+        'bash',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
